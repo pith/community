@@ -7,12 +7,20 @@ A "good accounts make good friends" application.
 
 # Run
 
-In order to run this app, execute the following commands:
+In order to run REST backend, execute the following commands:
 
     git clone https://github.com/pith/community.git
     cd community
     mvn spring-boot:run
     
-Then open your browser at [http://localhost:8080/](http://localhost:8080/) to access the w20 app.
+Then serve the frontend with grunt:
 
-The REST API is accessible from [http://localhost:8080/api](http://localhost:8080/api)
+    cd src/main/resources/public
+    grunt serve
+    
+Then open your browser at [http://localhost:9000/](http://localhost:9000/) to access the w20 app.
+
+The REST API is accessible from [http://localhost:8080/api](http://localhost:8080/api):
+
+* Get the expenses: /api/expenses
+* Get the debts: /api/debts
