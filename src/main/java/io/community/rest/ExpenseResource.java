@@ -3,6 +3,7 @@ package io.community.rest;
 import io.community.domain.Expense;
 import org.springframework.hateoas.ResourceSupport;
 
+import javax.validation.constraints.NotNull;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -10,33 +11,35 @@ import java.time.format.DateTimeFormatter;
  */
 public class ExpenseResource extends ResourceSupport {
 
-    private String userName;
-    private double priceAmount;
+    @NotNull
+    private String user;
+    @NotNull
+    private Double amount;
     private String dateTime;
 
     public ExpenseResource() {
     }
 
     public ExpenseResource(Expense expense) {
-        this.userName = expense.getUser().getName();
-        this.priceAmount = expense.getPrice().getAmount();
+        this.user = expense.getUser().getName();
+        this.amount = expense.getPrice().getAmount();
         this.dateTime = expense.getDateTime().format(DateTimeFormatter.ISO_DATE_TIME);
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUser() {
+        return user;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUser(String user) {
+        this.user = user;
     }
 
-    public double getPriceAmount() {
-        return priceAmount;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setPriceAmount(double priceAmount) {
-        this.priceAmount = priceAmount;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public String getDateTime() {

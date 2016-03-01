@@ -1,4 +1,4 @@
-// Generated on 2016-02-28 using generator-angular 0.15.1
+// Generated on 2016-03-01 using generator-angular 0.15.1
 'use strict';
 
 // # Globbing
@@ -220,7 +220,7 @@ module.exports = function (grunt) {
             }
           }
       }
-    },
+    }, 
 
     // Renames files for browser caching purposes
     filerev: {

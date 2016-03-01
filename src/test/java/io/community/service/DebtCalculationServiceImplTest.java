@@ -60,9 +60,9 @@ public class DebtCalculationServiceImplTest {
     }
 
     private void assertDebt(Debt debt, String debtor, double amount, String creditor) {
-        Assertions.assertThat(debt.getDebtor().getName()).isEqualTo(debtor);
-        Assertions.assertThat(debt.getCreditor().getName()).isEqualTo(creditor);
-        Assertions.assertThat(debt.getPrice().getAmount()).isEqualTo(amount);
+        Assertions.assertThat(debt.getDebtor()).isEqualTo(debtor);
+        Assertions.assertThat(debt.getCreditor()).isEqualTo(creditor);
+        Assertions.assertThat(debt.getAmount()).isEqualTo(amount);
     }
 
     @Test

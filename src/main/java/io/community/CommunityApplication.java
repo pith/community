@@ -5,8 +5,10 @@ import io.community.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import javax.annotation.PostConstruct;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
 public class CommunityApplication {
@@ -18,7 +20,7 @@ public class CommunityApplication {
 		SpringApplication.run(CommunityApplication.class, args);
 	}
 
-    @PostConstruct
+    //@PostConstruct
     public void initData() {
         User alice = new User("Alice").addExpense(34d);
         alice.setEmail("alice@gmail.com");
@@ -28,5 +30,17 @@ public class CommunityApplication {
                 .addExpense(3.14d);
         bob.setEmail("bob@gmail.com");
         userRepository.save(bob);
+    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/api/**")
+                        .allowedMethods("GET", "POST")
+                        .allowedOrigins("http://localhost:9000", "http://localhost:8080");
+            }
+        };
     }
 }

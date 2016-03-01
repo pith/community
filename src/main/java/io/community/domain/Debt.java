@@ -5,30 +5,30 @@ package io.community.domain;
  */
 public class Debt {
 
-    private final User creditor;
-    private final User debtor;
-    private final Price price;
+    private final String creditor;
+    private final String debtor;
+    private final double amount;
 
     public Debt(User creditor, User debtor, Price price) {
-        this.creditor = creditor;
-        this.debtor = debtor;
-        this.price = price;
+        this.creditor = creditor.getName();
+        this.debtor = debtor.getName();
+        this.amount = price.getAmount();
     }
 
-    public User getCreditor() {
+    public String getCreditor() {
         return creditor;
     }
 
-    public User getDebtor() {
+    public String getDebtor() {
         return debtor;
     }
 
-    public Price getPrice() {
-        return price;
+    public double getAmount() {
+        return amount;
     }
 
     @Override
     public String toString() {
-        return debtor + " owe " + price + " to " + creditor;
+        return debtor + " owe " + amount + " to " + creditor;
     }
 }

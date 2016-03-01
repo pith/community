@@ -5,6 +5,7 @@ import io.community.domain.User;
 import io.community.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,9 +39,12 @@ public class ExpenseController {
     @Transactional
     @ResponseBody
     @RequestMapping(value = "/api/expenses", method = POST)
-    public void create(ExpenseResource expenseDTO) {
-        User user = userRepository.findByName(expenseDTO.getUserName());
-        user.addExpense(expenseDTO.getPriceAmount());
+    public void create(@RequestBody ExpenseResource expenseDTO) {
+        User user = userRepository.findByName(expenseDTO.getUser());
+        if (user == null) {
+            user = new User(expenseDTO.getUser());
+        }
+        user.addExpense(expenseDTO.getAmount());
         userRepository.save(user);
     }
 

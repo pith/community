@@ -1,0 +1,32 @@
+<div class="row">
+  <form name="expenseForm">
+    <label>User:
+      <input type="text" name="userInput" ng-model="expense.user">
+    </label>
+    <label>Price:
+      <input type="number" name="amountInput" ng-model="expense.amount">
+    </label>
+    <input type="submit" ng-click="add(expense)" value="Save" />
+  </form>
+</div>
+
+<div class="row">
+  <table class="table table-striped">
+    <tr>
+      <th>User</th>
+      <th>Amount</th>
+      <th>Date</th>
+    </tr>
+    <tr ng-repeat="expense in expenses">
+      <td>{{expense.user}}</td>
+      <td>{{expense.amount | currency}}</td>
+      <td>{{expense.dateTime | date:'dd/MM/yyyy'}}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="row">
+  <ul ng-repeat="debt in debts">
+    <li>{{debt.debtor}} owe {{debt.amount | currency}} to {{debt.creditor}}</li>
+  </ul>
+</div>

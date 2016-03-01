@@ -1,7 +1,5 @@
 package io.community.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -16,10 +14,8 @@ public class User {
     private Long id;
     @Column(unique=true)
     private String name;
-    @Column(unique=true)
     private String email;
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Expense> expenses = new ArrayList<>();
 
     public User() {
