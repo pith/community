@@ -5,22 +5,31 @@ A "good accounts make good friends" application.
 
 *This is a work in progress.*
 
-# Run
+# Build
 
-In order to run REST backend, execute the following commands:
+This application is composed of a backend and a frontend. To build it from source do the following:
 
     git clone https://github.com/pith/community.git
     cd community
+    ./build.sh
+
+It is also possible to build them separatly using `mvn clean install` and `grunt build`.
+
+# Run
+
+In order to run this app, execute the following commands:
+
+    cd back
     mvn spring-boot:run
-    
-Then serve the frontend with grunt:
 
-    cd src/main/resources/public
+Then open your browser at [http://localhost:8080/](http://localhost:8080/).
+The REST API is accessible from [http://localhost:8080/api](http://localhost:8080/api).
+
+You can also run the front separatly as follows:
+
+    cd front
     grunt serve
-    
-Then open your browser at [http://localhost:9000/](http://localhost:9000/) to access the w20 app.
 
-The REST API is accessible from [http://localhost:8080/api](http://localhost:8080/api):
+# Copyright and license
 
-* Get the expenses: /api/expenses
-* Get the debts: /api/debts
+This source code is copyrighted by Pierre THIROUIN and released under the terms of the MIT license.
